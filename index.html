@@ -530,20 +530,163 @@
           text-align: justify;
         }
       }
+
+      #services {
+        text-align: center;
+        padding: 2rem 1rem;
+      }
+
+      .services-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .service-card {
+        background-color: #f4f4f4;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem;
+        width: 260px;
+        transition: transform 0.3s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .service-card h3 {
+        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+        color: #333;
+      }
+
+      .service-card p {
+        font-size: 0.95rem;
+        color: #555;
+      }
+
+      .details-container {
+        background-color: #f4f4f4;
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 350px;
+        margin: auto;
+      }
+
+      .details-container .icon {
+        width: 40px;
+        margin-bottom: 0.5rem;
+      }
+
+      .details-container h3 {
+        color: #333;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+
+      .details-container p {
+        font-size: 0.95rem;
+        color: #444;
+        line-height: 1.4;
+      }
+
+      /**/
+
+      #experience {
+        text-align: center;
+        padding: 2rem 1rem;
+      }
+
+      .experience-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .exp-card {
+        background-color: #f4f4f4;
+        border-left: 5px solid #3b82f6; /* nice blue accent */
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem;
+        width: 300px;
+        text-align: left;
+        transition: transform 0.3s ease;
+      }
+
+      .exp-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .exp-card h3 {
+        font-size: 1.2rem;
+        color: #333;
+        margin-bottom: 0.5rem;
+      }
+
+      .exp-card p {
+        font-size: 0.95rem;
+        color: #555;
+        margin: 0.3rem 0;
+      }
+
+      .exp-card ul {
+        margin-top: 0.5rem;
+        padding-left: 1.2rem;
+        font-size: 0.9rem;
+        color: #444;
+      }
+
+      .exp-card ul li {
+        margin-bottom: 0.4rem;
+        list-style: disc;
+      }
     </style>
   </head>
   <body>
-    <nav id="desktop-nav">
+    <nav id="desktop-nav" class="sticky-nav">
       <div class="logo">Nauman Noor</div>
       <div>
         <ul class="nav-links">
           <li><a href="#about">About</a></li>
-          <li><a href="#experience">Skills</a></li>
+          <li><a href="#services">Servces</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
     </nav>
+    <script>
+      window.addEventListener("scroll", () => {
+        const nav = document.getElementById("desktop-nav");
+        if (window.scrollY > 50) {
+          nav.classList.add("scrolled");
+        } else {
+          nav.classList.remove("scrolled");
+        }
+      });
+    </script>
+    <style>
+      .sticky-nav {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background-color: white;
+        transition: background-color 0.3s ease;
+        height: 10vh; /* Reduced height */
+      }
+
+      .sticky-nav.scrolled {
+        background-color: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+      }
+    </style>
     <nav id="hamburger-nav">
       <div class="logo">Nauman Noor</div>
       <div class="hamburger-menu">
@@ -554,7 +697,7 @@
         </div>
         <div class="menu-links">
           <li><a href="#about" onclick="toggleMenu()">About</a></li>
-          <li><a href="#experience" onclick="toggleMenu()">Skills</a></li>
+          <li><a href="#services" onclick="toggleMenu()">Services</a></li>
           <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
           <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
         </div>
@@ -567,7 +710,7 @@
       <div class="section__text">
         <p class="section__text__p1">Hello, I'm</p>
         <h1 class="title">Nauman Noor</h1>
-        <p class="section__text__p2">Full Stack Developer</p>
+        <p class="section__text__p2">Computer</p>
         <div class="btn-container">
           <button
             class="btn btn-color-2"
@@ -592,6 +735,12 @@
             class="icon"
             onclick="location.href='https://github.com/naumangoraya'"
           />
+          <img
+            src="./phone.png"
+            alt="My Github profile"
+            class="icon"
+            onclick="location.href='tel:+923106623823"
+          />
         </div>
       </div>
     </section>
@@ -600,36 +749,38 @@
       <h1 class="title">About Me</h1>
       <div class="section-container">
         <div class="section__pic-container">
-          <img
-            src="./about-pic.png"
-            alt="Profile picture"
-            class="about-pic"
-          />
+          <img src="./about-pic.png" alt="Profile picture" class="about-pic" />
         </div>
         <div class="about-details-container">
           <div class="about-containers">
             <div class="details-container">
-              <img
-                src="./experience.png"
-                alt="Experience icon"
-                class="icon"
-              />
-              <h3>Experience</h3>
-              <p>Data Science Trainee at Programmers Force<br />AI Training at NAVTTC</p>
+              <img src="./experience.png" alt="Experience icon" class="icon" />
+              <h3>Certifications</h3>
+
+              <p style="margin-top: 0.5rem">
+                <strong>Certifications:</strong><br />
+                Meta Front-End Developer Certificate<br />
+                SEO (Search Engine Optimization) – DigiSkills
+              </p>
             </div>
+
             <div class="details-container">
-              <img
-                src="./education.png"
-                alt="Education icon"
-                class="icon"
-              />
+              <img src="./education.png" alt="Education icon" class="icon" />
               <h3>Education</h3>
-              <p>Bachelor of Computer Science, FAST-NU, 2021–2025<br />Intermediate of Science, Aspire College, 2019–2021</p>
+              <p>
+                Bachelor of Computer Science, FAST-NU, 2021–2025<br />Intermediate
+                of Science, Aspire College, 2019–2021
+              </p>
             </div>
           </div>
           <div class="text-container">
             <p>
-              Dynamic MERN pursuing a Bachelor’s in Computer Science at FAST-NU, skilled in Python, JavaScript, React, and Node.js. Experienced in building scalable web applications and applying machine learning with TensorFlow and scikit-learn. Collaborative team player eager to contribute innovative solutions in an agile environment.
+              I'm a Computer Science student at FAST-NUCES and a MERN Stack
+              developer with a strong passion for Machine Learning, Artificial
+              Intelligence, and Generative Ai. I thrive in environments that
+              value innovation, collaboration, and continuous learning. Eager to
+              contribute my skills and curiosity, I'm excited to join a team
+              where technology meets impact.
             </p>
           </div>
         </div>
@@ -641,233 +792,98 @@
         onclick="location.href='./#experience'"
       />
     </section>
+
     <section id="experience">
-      <p class="section__text__p1">Explore My</p>
-      <h1 class="title">Skills</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container">
-            <h2 class="experience-sub-title">Programming Languages</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./checkmark.png"
-                  alt="Skill icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Python</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./checkmark.png"
-                  alt="Skill icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>JavaScript</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./checkmark.png"
-                  alt="Skill icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>SQL</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./checkmark.png"
-                  alt="Skill icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>C/C++</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src=".checkmark.png"
-                  alt="Skill icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>HTML</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src=".checkmark.png"
-                  alt="Skill icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>CSS</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-            </div>
-          </div>
-          <div class="details-container">
-            <h2 class="experience-sub-title">Frameworks & Libraries</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src=".checkmark.png"
-                  alt="Skill icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>React</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./checkmark.png"
-                  alt="Skill icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Node.js</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./checkmark.png"
-                  alt="Skill icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Express</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./checkmark.png"
-                  alt="Skill icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Tailwind CSS</h3>
-                  <p>Basic</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./checkmark.png"
-                  alt="Skill icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>pandas</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./checkmark.png"
-                  alt="Skill icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>NumPy</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./checkmark.png"
-                  alt="Skill icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Scikit-learn</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./checkmark.png"
-                  alt="Skill icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Matplotlib</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-            </div>
-          </div>
-          <div class="details-container">
-            <h2 class="experience-sub-title">Developer Tools</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./checkmark.png"
-                  alt="Skill icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Git</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./checkmark.png"
-                  alt="Skill icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>GitHub</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./checkmark.png"
-                  alt="Skill icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>VS Code</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./checkmark.png"
-                  alt="Skill icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Visual Studio</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-            </div>
-          </div>
+      <p class="section__text__p1">Where I Learned</p>
+      <h1 class="title">Experience & Trainings</h1>
+      <div class="experience-container">
+        <!-- Data Science Trainee -->
+        <div class="exp-card">
+          <h3>Data Science Trainee</h3>
+          <p><strong>Programmers Force</strong> | Jul 2024 – Aug 2024</p>
+          <p><em>Lahore, Punjab</em></p>
+          <ul>
+            <li>
+              Worked with Python, NumPy, Pandas, and OpenCV for data analysis &
+              computer vision.
+            </li>
+            <li>
+              Explored web scraping and Retrieval-Augmented Generation (RAG).
+            </li>
+          </ul>
+        </div>
+
+        <!-- AI & ML Training -->
+        <div class="exp-card">
+          <h3>AI & Deep Learning Trainee</h3>
+          <p><strong>NAVTTC </strong>| Feb 2024 – May 2024</p>
+          <p><em>Lahore, Punjab</em></p>
+          <ul>
+            <li>Hands-on with ML model design, evaluation & deployment.</li>
+            <li>
+              Focused on NLP using TensorFlow, including text preprocessing and
+              deep learning.
+            </li>
+            <li>Worked with word embeddings and end-to-end NLP pipelines.</li>
+          </ul>
+        </div>
+
+        <!-- Projects Note -->
+        <div class="exp-card">
+          <h3>Operations Volunteer | Future Fast</h3>
+          <p><strong>2023</strong></p>
+          <p><em>Lahore, Punjab</em></p>
+          <p>
+            Handled operational tasks, managed workflows, and assisted in the
+            coordination of events and projects to ensure smooth execution at
+            Future Fast.
+          </p>
         </div>
       </div>
-      <img
-        src="./arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#projects'"
-      />
     </section>
+
+    <section id="services">
+      <p class="section__text__p1">What I Do</p>
+      <h1 class="title">My Services</h1>
+      <div class="services-container">
+        <div class="service-card">
+          <h3>Web Development</h3>
+          <p>
+            Full-stack development with React, Node.js, and database
+            integration. Focused on performance and user experience.
+          </p>
+        </div>
+        <div class="service-card">
+          <h3>AI & ML</h3>
+          <p>
+            Designing and training machine learning models using Python,
+            scikit-learn, and TensorFlow for predictive and intelligent systems.
+          </p>
+        </div>
+        <div class="service-card">
+          <h3>NLP</h3>
+          <p>
+            Natural Language Processing using transformers, embeddings, and
+            TensorFlow for text classification, sentiment analysis, and more.
+          </p>
+        </div>
+        <div class="service-card">
+          <h3>Computer Vision</h3>
+          <p>
+            Image analysis and object detection with OpenCV and deep learning
+            techniques for real-time visual intelligence.
+          </p>
+        </div>
+        <div class="service-card">
+          <h3>LLM Integration</h3>
+          <p>
+            Building intelligent systems by integrating Large Language Models
+            like GPT with web apps and data pipelines (RAG, agents, APIs).
+          </p>
+        </div>
+      </div>
+    </section>
+
     <section id="projects">
       <p class="section__text__p1">Browse My Recent</p>
       <h1 class="title">Projects</h1>
@@ -881,8 +897,19 @@
                 class="project-img"
               />
             </div>
-            <h2 class="experience-sub-title project-title">Advanced Clickstream Data Analytics</h2>
-            <p>Built a campaign performance tool with Next.js and LangChain, analyzing clickstream data for marketing insights. Integrated LSTM/BiLSTM models, improving user behavior prediction accuracy by 20%.</p>
+            <h2 class="experience-sub-title project-title">
+              Advanced Clickstream Data Analytics
+            </h2>
+            <p>
+              Conducted sentiment analysis using LSTM, BI-LSTM, and Naive Bayes;
+              achieved highest accuracy (92%) with Naive Bayes and evaluated
+              multiple word embeddings (Word2Vec, FastText, GloVe). Designed
+              sales prediction models using Random Forest, XGBoost, and Linear
+              Regression; Random Forest outperformed others with 84% accuracy.
+              Integrated sentiment and sales forecasting into a unified
+              analytics system, enabling actionable business insights for
+              campaign optimization across e-commerce platforms.
+            </p>
             <div class="btn-container">
               <button
                 class="btn btn-color-2 project-btn"
@@ -907,7 +934,16 @@
               />
             </div>
             <h2 class="experience-sub-title project-title">E-Commerce Store</h2>
-            <p>Developed a full-stack e-commerce platform with React.js and Node.js, featuring secure Stripe checkout. Optimized session management with Redis, reducing response times by 15%.</p>
+            <p>
+              Built a full-stack e-commerce store using React.js, Node.js,
+              Stripe, and Redis, featuring secure user authentication, product
+              catalog, and seamless Stripe-based checkout. Integrated a
+              real-time admin panel with Redis for session management, enabling
+              efficient control over products, inventory tracking, discount
+              coupon management, and live sales analytics. The system offers
+              business owners actionable insights and full operational control
+              through a responsive and scalable platform.
+            </p>
             <div class="btn-container">
               <button
                 class="btn btn-color-2 project-btn"
@@ -931,8 +967,16 @@
                 class="project-img"
               />
             </div>
-            <h2 class="experience-sub-title project-title">ConnectDevs– Developer Networking Platform</h2>
-            <p>Created a networking platform with React.js and Node.js, enhancing developer connectivity. Designed an interactive UI, improving user engagement by 10%.</p>
+            <h2 class="experience-sub-title project-title">
+              ConnectDevs– Developer Networking Platform
+            </h2>
+            <p>
+              Created ConnectDevs, a developer networking platform using
+              React.js and Node.js, allowing users to create profiles and send
+              connection requests. Designed an interactive UI with React for a
+              smooth user experience and implemented scalable backend logic to
+              manage professional network connections effectively.
+            </p>
             <div class="btn-container">
               <button
                 class="btn btn-color-2 project-btn"
@@ -975,7 +1019,19 @@
             alt="LinkedIn icon"
             class="icon contact-icon"
           />
-          <p><a href="https://linkedin.com/in/nauman-noor-goraya">LinkedIn</a></p>
+          <p>
+            <a href="https://linkedin.com/in/nauman-noor-goraya">LinkedIn</a>
+          </p>
+        </div>
+        <div class="contact-info-container">
+          <img
+            src="./phone.png"
+            alt="LinkedIn icon"
+            class="icon contact-icon"
+          />
+          <p>
+            <a href="+923106623823">+92 310 6623823</a>
+          </p>
         </div>
       </div>
     </section>
@@ -984,7 +1040,7 @@
         <div class="nav-links-container">
           <ul class="nav-links">
             <li><a href="#about">About</a></li>
-            <li><a href="#experience">Skills</a></li>
+            <li><a href="#services">Services</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
